@@ -1,168 +1,132 @@
-import  * as firebase from 'firebase';
+import * as firebase from 'firebase';
+
+
 
 
 const config = {
-    apiKey: "AIzaSyDIJJ_uu24IHqJqsoiRiEz3HlgAeutnD2U",
-    authDomain: "expensify-78011.firebaseapp.com",
-    databaseURL: "https://expensify-78011.firebaseio.com",
-    projectId: "expensify-78011",
-    storageBucket: "expensify-78011.appspot.com",
-    messagingSenderId: "405213195998",
-    appId: "1:405213195998:web:63e180bdbcf17ee3e29c4f",
-    measurementId: "G-BD4HCBSZ87"
-
+  apiKey: process.env.FIREBASE_API_KEY,
+  authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+  databaseURL: process.env.FIREBASE_DATABASE_URL,
+  projectId: process.env.FIREBASE_PROJECT_ID,
+  storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID
 };
 
 firebase.initializeApp(config);
+
 const database = firebase.database();
 
-export {firebase, database as default} ; 
-    
-//child.removed
+export { firebase, database as default };
+
+// // child_removed
 // database.ref('expenses').on('child_removed', (snapshot) => {
-//     console.log(snapshot.key, snapshot.val());
+//   console.log(snapshot.key, snapshot.val());
 // });
 
-// //child_changed
-// database.ref('expenses').on('child_changed', (snapshot) =>{
-//     console.log(snapshot.key, snapshot.val());
+// // child_changed
+// database.ref('expenses').on('child_changed', (snapshot) => {
+//   console.log(snapshot.key, snapshot.val());
 // });
 
-// //child.added
-// database.ref('expenses').on('child_added', (snapshot) =>{
-//     console.log(snapshot.key, snapshot.val());
+// // child_added
+// database.ref('expenses').on('child_added', (snapshot) => {
+//   console.log(snapshot.key, snapshot.val());
 // });
+
+// // database.ref('expenses')
+// //   .once('value')
+// //   .then((snapshot) => {
+// //     const expenses = [];
+
+// //     snapshot.forEach((childSnapshot) => {
+// //       expenses.push({
+// //         id: childSnapshot.key,
+// //         ...childSnapshot.val()
+// //       });
+// //     });
+
+// //     console.log(expenses);
+// //   });
+
+// // database.ref('expenses').on('value', (snapshot) => {
+// //   const expenses = [];
+
+// //   snapshot.forEach((childSnapshot) => {
+// //     expenses.push({
+// //       id: childSnapshot.key,
+// //       ...childSnapshot.val()
+// //     });
+// //   });
+
+// //   console.log(expenses);
+// // });
 
 // database.ref('expenses').push({
-//     decription: 'Rent',
-//     note: 'Paid',
-//     amount: 1440,
-//     createdAt: 1345
-// })
-
-// database.ref('expenses').push({
-//     decription: 'Gas Bill',
-//     note: 'Paid',
-//     amount: 45,
-//     createdAt: 1989
-// })
-
-// database.ref('expenses').push({
-//     decription: 'Water Bill',
-//     note: 'Paid',
-//     amount: 25,
-//     createdAt: 1231
-// })
-// database.ref('notes').push({
-//     title: 'Course training',
-//     body: 'React.js'
+//   description: 'Rent',
+//   note: '',
+//   amount: 109500,
+//   createdAt: 976123498763
 // });
 
 
-    /**** Using on to Subcribe/fetch data */
-// database.ref('expenses').on('value', (snapshot) => {
-//     const expenses = [];
-
-//     snapshot.forEach((childSnapshot) => {
-//         expenses.push({
-//             id: childSnapshot.key,
-//             ...childSnapshot.val()
-//         })
-//     });
-
-//     console.log(expenses);
-// })
-
-    /*** Using once to Subcribe/fetch data *********/
-// database.ref('expenses')
-//     .once('value', (any))
-//     .then((snapshot) => {
-//         const expenses = [];
-
-//         snapshot.forEach((childSnapshot) => {
-//             expenses.push({
-//                 id: childSnapshot.key,
-//                 ...childSnapshot.val()
-//             })
-//         });
-
-//         console.log(expenses);
-//     });
 
 
-    /**** Using on to subcribe/fetch data **********/
-
-// database.ref().on('value' , (snapshot) => {
-//     const val = snapshot.val();
-//     console.log(`${val.name} is a ${val.job.title} at ${val.job.company}`);
-// });
-
-    /** Using once to fetch the data *************/
-
-// database.ref('location/city')
-// .once('value')
-// .then((snapshot) => {
-
-//     const val = snapshot.val();
-//     console.log(val);
-
-// })
-// .catch(() => {
-//     console.log('Error fetching data');
-
-// });
 
 
-    /* ******** Updating ********** */
+// // database.ref('notes/-Krll52aVDQ3X6dOtmS7').remove();
 
-// database.ref().update({
-//     stressLevel: 9,
-//     'job/company': 'Amazon',
-//     'location/city': 'Seattle'
-//  });
-// database.ref().update({
-//    job: 'Manager',
-//   'location/city': 'Chicago'
-// });
+// // database.ref('notes').push({
+// //   title: 'Course Topics',
+// //   body: 'React Native, Angular, Python'
+// // });
 
-    //*********** Setting data **********/
+// // database.ref().on('value', (snapshot) => {
+// //   const val = snapshot.val();
+// //   console.log(`${val.name} is a ${val.job.title} at ${val.job.company}`);
+// // })
 
-    // database.ref().set({
-//     name: 'Zohair',
-//     age: 29,
-//     stressLevel: 1,
-//     job: {
-//         title: 'Software Developer',
-//         company: 'Google'
-//     },
-//     location: {
-//         city: 'New York',
-//         country:'USA'
-        
-//     }
-    
-// }).then(() => {
-//     console.log('Data is saved');
-// }).catch((e) => {
-//     console.log('This failed.', e)
-// });
+// // Setup data sub -> Andrew is a Software Developer at Amazon.
 
-//database.ref().set("This is my date");
+// // Change the data and make sure it reprints
 
-    //*****Changing data ***************/
+// // database.ref('location/city')
+// //   .once('value')
+// //   .then((snapshot) => {
+// //     const val = snapshot.val();
+// //     console.log(val);
+// //   })
+// //   .catch((e) => {
+// //     console.log('Error fetching data', e);
+// //   });
 
-// database.ref('age').set(30);
-// database.ref('location/city').set('New Jersey');
+// // database.ref().set({
+// //   name: 'Andrew Mead',
+// //   age: 26,
+// //   stressLevel: 6,
+// //   job: {
+// //     title: 'Software developer',
+// //     company: 'Google'
+// //   },
+// //   location: {
+// //     city: 'Philadelphia',
+// //     country: 'United States'
+// //   }
+// // }).then(() => {
+// //   console.log('Data is saved!');
+// // }).catch((e) => {
+// //   console.log('This failed.', e);
+// // });
 
-    /* **********Removing data **********/
+// // database.ref().update({
+// //   stressLevel: 9,
+// //   'job/company': 'Amazon',
+// //   'location/city': 'Seattle'
+// // });
 
-// database.ref()
-// .remove()
-// .then(() => {
-//     console.log('Data was removed');
-// }).catch((e) => {
-//     console.log('Sorry, not removed' , e);
-// });
-
-    /******* Using set(null) to Remove data ****************/
-// database.ref().set(null);
+// // database.ref()
+// //   .remove()
+// //   .then(() => {
+// //     console.log('Data was removed');
+// //   }).catch((e) => {
+// //     console.log('Did not remove data', e);
+// //   });
