@@ -1,4 +1,4 @@
-import * as firebase from 'firebase';
+import * as firebase from 'firebase/firebase';
 
 const config = {
   apiKey: process.env.FIREBASE_API_KEY,
@@ -12,8 +12,13 @@ const config = {
 firebase.initializeApp(config);
 
 const database = firebase.database();
+    
+      //Google Authentication--- in order to login via gmail
+const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
+// googleAuthProvider.addScope('profile');
+// googleAuthProvider.addScope('email');
+export { firebase, googleAuthProvider, database as default };
 
-export { firebase, database as default };
 
 // // child_removed
 // database.ref('expenses').on('child_removed', (snapshot) => {
