@@ -1,7 +1,6 @@
 import moment from 'moment';
-
+import React from 'react';
 // Get visible expenses
-
 export default (expenses, { text, sortBy, startDate, endDate }) => {
   return expenses.filter((expense) => {
     const createdAtMoment = moment(expense.createdAt);
@@ -18,3 +17,5 @@ export default (expenses, { text, sortBy, startDate, endDate }) => {
     }
   });
 };
+
+//.toLowerCase().includes(text.toLowerCase());
